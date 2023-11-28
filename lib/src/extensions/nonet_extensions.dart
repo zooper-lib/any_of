@@ -20,7 +20,7 @@ extension NonetExtensions<T0, T1, T2, T3, T4, T5, T6, T7, T8> on Nonet<T0, T1, T
   /// - Returns: The result of applying the corresponding function to the [Nonet]'s value.
   ///
   /// - Throws: An [Exception] if the [Nonet] is empty (none of the functions or values are present).
-  R? map<R>({
+  R map<R>({
     required R Function(T0)? first,
     required R Function(T1)? second,
     required R Function(T2)? third,

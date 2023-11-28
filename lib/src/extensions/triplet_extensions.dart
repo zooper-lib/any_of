@@ -14,7 +14,7 @@ extension TripletExtensions<T0, T1, T2> on Triplet<T0, T1, T2> {
   /// - Returns: The result of applying the corresponding function to the [Triplet]'s value.
   ///
   /// - Throws: An [Exception] if the [Triplet] is empty (neither [first], [second], nor [third] value is present).
-  R? map<R>({
+  R map<R>({
     R Function(T0)? first,
     R Function(T1)? second,
     R Function(T2)? third,

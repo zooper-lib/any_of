@@ -1,6 +1,6 @@
 name: any_of
 description: A Flutter package for working with algebraic data types (ADTs) representing "any-of" values with multiple options.
-version: 0.0.4
+version: 0.0.5
 homepage: https://pub.dev/publishers/zooper.dev/packages
 
 environment:
