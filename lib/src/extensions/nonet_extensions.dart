@@ -1,6 +1,25 @@
 import 'package:any_of/any_of.dart';
 
 extension NonetExtensions<T0, T1, T2, T3, T4, T5, T6, T7, T8> on Nonet<T0, T1, T2, T3, T4, T5, T6, T7, T8> {
+  /// Maps the current instance of [Nonet<T0, T1, T2, T3, T4, T5, T6, T7, T8>] to a different type [R].
+  ///
+  /// This method applies either the [first], [second], [third], [fourth], [fifth], [sixth], [seventh], [eighth], or [ninth] function
+  /// based on whether the [Nonet] holds a value of type [T0], [T1], [T2], [T3], [T4], [T5], [T6], [T7], or [T8], respectively.
+  ///
+  /// - Parameters:
+  ///   - [first]: A function that takes a [T0] type value and returns an [R] type value.
+  ///   - [second]: A function that takes a [T1] type value and returns an [R] type value.
+  ///   - [third]: A function that takes a [T2] type value and returns an [R] type value.
+  ///   - [fourth]: A function that takes a [T3] type value and returns an [R] type value.
+  ///   - [fifth]: A function that takes a [T4] type value and returns an [R] type value.
+  ///   - [sixth]: A function that takes a [T5] type value and returns an [R] type value.
+  ///   - [seventh]: A function that takes a [T6] type value and returns an [R] type value.
+  ///   - [eighth]: A function that takes a [T7] type value and returns an [R] type value.
+  ///   - [ninth]: A function that takes a [T8] type value and returns an [R] type value.
+  ///
+  /// - Returns: The result of applying the corresponding function to the [Nonet]'s value.
+  ///
+  /// - Throws: An [Exception] if the [Nonet] is empty (none of the functions or values are present).
   R? map<R>({
     required R Function(T0)? first,
     required R Function(T1)? second,
@@ -35,6 +54,30 @@ extension NonetExtensions<T0, T1, T2, T3, T4, T5, T6, T7, T8> on Nonet<T0, T1, T
     }
   }
 
+  /// Executes a callback based on the type of value stored in the [Nonet<T0, T1, T2, T3, T4, T5, T6, T7, T8>].
+  ///
+  /// If the [Nonet] contains a [T0] type value, the [first] callback is executed.
+  /// If it contains a [T1] type value, the [second] callback is executed.
+  /// If it contains a [T2] type value, the [third] callback is executed.
+  /// If it contains a [T3] type value, the [fourth] callback is executed.
+  /// If it contains a [T4] type value, the [fifth] callback is executed.
+  /// If it contains a [T5] type value, the [sixth] callback is executed.
+  /// If it contains a [T6] type value, the [seventh] callback is executed.
+  /// If it contains a [T7] type value, the [eighth] callback is executed.
+  /// If it contains a [T8] type value, the [ninth] callback is executed.
+  ///
+  /// - Parameters:
+  ///   - [first]: A callback function for the [T0] type value.
+  ///   - [second]: A callback function for the [T1] type value.
+  ///   - [third]: A callback function for the [T2] type value.
+  ///   - [fourth]: A callback function for the [T3] type value.
+  ///   - [fifth]: A callback function for the [T4] type value.
+  ///   - [sixth]: A callback function for the [T5] type value.
+  ///   - [seventh]: A callback function for the [T6] type value.
+  ///   - [eighth]: A callback function for the [T7] type value.
+  ///   - [ninth]: A callback function for the [T8] type value.
+  ///
+  /// - Throws: An [Exception] if the [Nonet] is empty (none of the functions or values are present).
   void on<R>({
     void Function(T0)? first,
     void Function(T1)? second,
@@ -69,6 +112,14 @@ extension NonetExtensions<T0, T1, T2, T3, T4, T5, T6, T7, T8> on Nonet<T0, T1, T
     }
   }
 
+  /// Executes the provided callback if the current value in the [Nonet<T0, T1, T2, T3, T4, T5, T6, T7, T8>] is of the specified type [R].
+  ///
+  /// The method checks if the [Nonet] contains a value of type [R] in any of its positions
+  /// and executes the [callback] with that value.
+  ///
+  /// - Parameter [callback]: A function to be executed with the value of type [R].
+  ///
+  /// - Note: If the [Nonet] does not contain a value of type [R], the [callback] is not executed.
   void ifType<R>({
     required void Function(T0) first,
     required void Function(T1) second,
