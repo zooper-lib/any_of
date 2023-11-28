@@ -1,3 +1,7 @@
+## 1.0.0
+
+- Made `on` and `run` methods async
+
 ## 0.0.5
 
 - Removed nullability on some `map` methods

@@ -21,19 +21,19 @@ class NonetUtils {
   /// - Throws: Propagates any exceptions from [functionToExecute].
   static Future<void> run<T0, T1, T2, T3, T4, T5, T6, T7, T8>({
     required Future<Nonet<T0, T1, T2, T3, T4, T5, T6, T7, T8>> Function() functionToExecute,
-    void Function(T0)? onFirst,
-    void Function(T1)? onSecond,
-    void Function(T2)? onThird,
-    void Function(T3)? onFourth,
-    void Function(T4)? onFifth,
-    void Function(T5)? onSixth,
-    void Function(T6)? onSeventh,
-    void Function(T7)? onEighth,
-    void Function(T8)? onNinth,
+    Future<void> Function(T0)? onFirst,
+    Future<void> Function(T1)? onSecond,
+    Future<void> Function(T2)? onThird,
+    Future<void> Function(T3)? onFourth,
+    Future<void> Function(T4)? onFifth,
+    Future<void> Function(T5)? onSixth,
+    Future<void> Function(T6)? onSeventh,
+    Future<void> Function(T7)? onEighth,
+    Future<void> Function(T8)? onNinth,
   }) async {
     var response = await functionToExecute();
 
-    response.on(
+    await response.on(
       first: onFirst,
       second: onSecond,
       third: onThird,

@@ -54,23 +54,23 @@ extension QuintetExtensions<T0, T1, T2, T3, T4> on Quintet<T0, T1, T2, T3, T4> {
   ///   - [fifth]: A callback function for the [T4] type value.
   ///
   /// - Throws: An [Exception] if the [Quintet] is empty (neither [first], [second], [third], [fourth], nor [fifth] value is present).
-  void on<R>({
-    void Function(T0)? first,
-    void Function(T1)? second,
-    void Function(T2)? third,
-    void Function(T3)? fourth,
-    void Function(T4)? fifth,
-  }) {
+  Future<void> on<R>({
+    Future<void> Function(T0)? first,
+    Future<void> Function(T1)? second,
+    Future<void> Function(T2)? third,
+    Future<void> Function(T3)? fourth,
+    Future<void> Function(T4)? fifth,
+  }) async {
     if (isFirst) {
-      return first?.call(this.first);
+      return await first?.call(this.first);
     } else if (isSecond) {
-      return second?.call(this.second);
+      return await second?.call(this.second);
     } else if (isThird) {
-      return third?.call(this.third);
+      return await third?.call(this.third);
     } else if (isFourth) {
-      return fourth?.call(this.fourth);
+      return await fourth?.call(this.fourth);
     } else if (isFifth) {
-      return fifth?.call(this.fifth);
+      return await fifth?.call(this.fifth);
     } else {
       throw Exception('Quintet is empty');
     }

@@ -36,14 +36,14 @@ extension DoubletExtensions<T0, T1> on Doublet<T0, T1> {
   ///   - [second]: A callback function for the [T1] type value.
   ///
   /// - Throws: An [Exception] if the [Doublet] is empty (neither [first] nor [second] value is present).
-  void on<R>({
-    void Function(T0)? first,
-    void Function(T1)? second,
-  }) {
+  Future<void> on<R>({
+    Future<void> Function(T0)? first,
+    Future<void> Function(T1)? second,
+  }) async {
     if (isFirst) {
-      return first?.call(this.first);
+      return await first?.call(this.first);
     } else if (isSecond) {
-      return second?.call(this.second);
+      return await second?.call(this.second);
     } else {
       throw Exception('Doublet is empty');
     }

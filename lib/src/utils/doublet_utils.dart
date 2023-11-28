@@ -17,12 +17,12 @@ class DoubletUtils {
   ///         an exception is thrown by the [on] method, assuming this behavior is implemented in [on].
   static Future<void> run<T0, T1>({
     required Future<Doublet<T0, T1>> Function() functionToExecute,
-    void Function(T0)? onFirst,
-    void Function(T1)? onSecond,
+    Future<void> Function(T0)? onFirst,
+    Future<void> Function(T1)? onSecond,
   }) async {
     var response = await functionToExecute();
 
-    response.on(
+    await response.on(
       first: onFirst,
       second: onSecond,
     );

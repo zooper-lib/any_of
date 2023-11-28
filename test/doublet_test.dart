@@ -73,10 +73,10 @@ void main() {
 
       var result = '';
       instance.on(
-        first: (value) {
+        first: (value) async {
           result = 'Callback executed with value: $value';
         },
-        second: (value) {
+        second: (value) async {
           result = 'Not executed';
         },
       );
@@ -89,10 +89,10 @@ void main() {
 
       var result = '';
       instance.on(
-        first: (value) {
+        first: (value) async {
           result = 'Not executed';
         },
-        second: (value) {
+        second: (value) async {
           result = 'Callback executed with value: ${value.message}';
         },
       );
@@ -148,13 +148,48 @@ void main() {
   });
 
   group('run', () {
+    test('Awaits first callback', () async {
+      var result = '';
+      var instance = TestDoubletClass.success('Success');
+
+      await DoubletUtils.run(
+        functionToExecute: () async {
+          await Future.delayed(const Duration(milliseconds: 100));
+          return instance;
+        },
+        onFirst: (value) async {
+          result = 'Callback executed with value: $value';
+        },
+      );
+
+      expect(result, 'Callback executed with value: Success');
+    });
+
+    test('Awaits second callback', () async {
+      var result = 'Not executed';
+      var instance = TestDoubletClass.success('Success');
+
+      await DoubletUtils.run(
+        functionToExecute: () async {
+          await Future.delayed(const Duration(milliseconds: 100));
+          return instance;
+        },
+        onFirst: (value) async {
+          await Future.delayed(const Duration(milliseconds: 100));
+          result = 'Callback executed with value: $value';
+        },
+      );
+
+      expect(result, 'Callback executed with value: Success');
+    });
+
     test('Executes first callback for String type', () async {
       var result = '';
       var instance = TestDoubletClass.success('Success');
 
       await DoubletUtils.run(
         functionToExecute: () async => instance,
-        onFirst: (value) {
+        onFirst: (value) async {
           result = 'Callback executed with value: $value';
         },
       );
@@ -168,7 +203,7 @@ void main() {
 
       await DoubletUtils.run(
         functionToExecute: () async => instance,
-        onSecond: (value) {
+        onSecond: (value) async {
           result = 'Callback executed with value: ${value.message}';
         },
       );
@@ -182,7 +217,7 @@ void main() {
 
       await DoubletUtils.run(
         functionToExecute: () async => instance,
-        onFirst: (value) {
+        onFirst: (value) async {
           result = 'Callback executed';
         },
       );
@@ -196,7 +231,7 @@ void main() {
 
       await DoubletUtils.run(
         functionToExecute: () async => instance,
-        onSecond: (value) {
+        onSecond: (value) async {
           result = 'Callback executed';
         },
       );
