@@ -15,7 +15,7 @@ extension QuartetExtensions<T0, T1, T2, T3> on Quartet<T0, T1, T2, T3> {
   /// - Returns: The result of applying the corresponding function to the [Quartet]'s value.
   ///
   /// - Throws: An [Exception] if the [Quartet] is empty (neither [first], [second], [third], nor [fourth] value is present).
-  R? map<R>({
+  R map<R>({
     R Function(T0)? first,
     R Function(T1)? second,
     R Function(T2)? third,

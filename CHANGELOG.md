@@ -1,10 +1,11 @@
-## 0.0.1
+## 0.0.5
 
-- Implemented basic functionalities
+- Removed nullability on some `map` methods
 
-## 0.0.2
+## 0.0.4
 
-- Made `on()` function parameters nullable
+- Addeed `run` function
+- Added comments for most methods
 
 ## 0.0.3
 
@@ -12,7 +13,10 @@
 - Added `toString()` method to response types
 - Added `InternalError` response type
 
-## 0.0.4
+## 0.0.2
 
-- Addeed `run` function
-- Added comments for most methods
+- Made `on()` function parameters nullable
+
+## 0.0.1
+
+- Implemented basic functionalities

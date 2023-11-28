@@ -16,7 +16,7 @@ extension QuintetExtensions<T0, T1, T2, T3, T4> on Quintet<T0, T1, T2, T3, T4> {
   /// - Returns: The result of applying the corresponding function to the [Quintet]'s value.
   ///
   /// - Throws: An [Exception] if the [Quintet] is empty (neither [first], [second], [third], [fourth], nor [fifth] value is present).
-  R? map<R>({
+  R map<R>({
     R Function(T0)? first,
     R Function(T1)? second,
     R Function(T2)? third,
