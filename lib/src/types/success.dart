@@ -1,3 +1,3 @@
-import 'one_of_type.dart';
+import 'any_of_type.dart';
 
-class Success extends OneOfType {}
+class Success extends AnyOfType {}

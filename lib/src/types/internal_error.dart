@@ -1,6 +1,6 @@
 import 'package:any_of/any_of.dart';
 
-class InternalError extends OneOfType {
+class InternalError extends AnyOfType {
   final String message;
 
   InternalError(this.message);

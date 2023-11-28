@@ -1,6 +1,6 @@
-import 'one_of_type.dart';
+import 'any_of_type.dart';
 
-class NotFound extends OneOfType {
+class NotFound extends AnyOfType {
   final String message;
 
   NotFound(this.message);
