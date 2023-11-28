@@ -146,6 +146,64 @@ void main() {
       expect(result, '');
     });
   });
+
+  group('run', () {
+    test('Executes first callback for String type', () async {
+      var result = '';
+      var instance = TestDoubletClass.success('Success');
+
+      await DoubletUtils.run(
+        functionToExecute: () async => instance,
+        onFirst: (value) {
+          result = 'Callback executed with value: $value';
+        },
+      );
+
+      expect(result, 'Callback executed with value: Success');
+    });
+
+    test('Executes second callback for NotFound type', () async {
+      var result = '';
+      var instance = TestDoubletClass.notFound(NotFound('Not found'));
+
+      await DoubletUtils.run(
+        functionToExecute: () async => instance,
+        onSecond: (value) {
+          result = 'Callback executed with value: ${value.message}';
+        },
+      );
+
+      expect(result, 'Callback executed with value: Not found');
+    });
+
+    test('Does not execute first callback for NotFound type', () async {
+      var result = '';
+      var instance = TestDoubletClass.notFound(NotFound('Not found'));
+
+      await DoubletUtils.run(
+        functionToExecute: () async => instance,
+        onFirst: (value) {
+          result = 'Callback executed';
+        },
+      );
+
+      expect(result, '');
+    });
+
+    test('Does not execute second callback for String type', () async {
+      var result = '';
+      var instance = TestDoubletClass.success('Success');
+
+      await DoubletUtils.run(
+        functionToExecute: () async => instance,
+        onSecond: (value) {
+          result = 'Callback executed';
+        },
+      );
+
+      expect(result, '');
+    });
+  });
 }
 
 class TestDoubletClass extends Doublet<String, NotFound> {
