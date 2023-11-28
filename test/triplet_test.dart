@@ -98,13 +98,13 @@ void main() {
 
       var result = '';
       instance.on(
-        first: (value) {
+        first: (value) async {
           result = 'Callback executed with value: $value';
         },
-        second: (value) {
+        second: (value) async {
           result = 'Not executed';
         },
-        third: (value) {
+        third: (value) async {
           result = 'Not executed';
         },
       );
@@ -117,13 +117,13 @@ void main() {
 
       var result = '';
       instance.on(
-        first: (value) {
+        first: (value) async {
           result = 'Not executed';
         },
-        second: (value) {
+        second: (value) async {
           result = 'Callback executed with value: ${value.message}';
         },
-        third: (value) {
+        third: (value) async {
           result = 'Not executed';
         },
       );
@@ -136,13 +136,13 @@ void main() {
 
       var result = '';
       instance.on(
-        first: (value) {
+        first: (value) async {
           result = 'Not executed';
         },
-        second: (value) {
+        second: (value) async {
           result = 'Not executed';
         },
-        third: (value) {
+        third: (value) async {
           result = 'Callback executed with value: $value';
         },
       );

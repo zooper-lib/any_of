@@ -60,26 +60,26 @@ extension SextetExtensions<T0, T1, T2, T3, T4, T5> on Sextet<T0, T1, T2, T3, T4,
   ///   - [sixth]: A callback function for the [T5] type value.
   ///
   /// - Throws: An [Exception] if the [Sextet] is empty (neither [first], [second], [third], [fourth], [fifth], nor [sixth] value is present).
-  void on<R>({
-    void Function(T0)? first,
-    void Function(T1)? second,
-    void Function(T2)? third,
-    void Function(T3)? fourth,
-    void Function(T4)? fifth,
-    void Function(T5)? sixth,
-  }) {
+  Future<void> on<R>({
+    Future<void> Function(T0)? first,
+    Future<void> Function(T1)? second,
+    Future<void> Function(T2)? third,
+    Future<void> Function(T3)? fourth,
+    Future<void> Function(T4)? fifth,
+    Future<void> Function(T5)? sixth,
+  }) async {
     if (isFirst) {
-      return first?.call(this.first);
+      return await first?.call(this.first);
     } else if (isSecond) {
-      return second?.call(this.second);
+      return await second?.call(this.second);
     } else if (isThird) {
-      return third?.call(this.third);
+      return await third?.call(this.third);
     } else if (isFourth) {
-      return fourth?.call(this.fourth);
+      return await fourth?.call(this.fourth);
     } else if (isFifth) {
-      return fifth?.call(this.fifth);
+      return await fifth?.call(this.fifth);
     } else if (isSixth) {
-      return sixth?.call(this.sixth);
+      return await sixth?.call(this.sixth);
     } else {
       throw Exception('Sextet is empty');
     }

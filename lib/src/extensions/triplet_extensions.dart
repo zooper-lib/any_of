@@ -42,17 +42,17 @@ extension TripletExtensions<T0, T1, T2> on Triplet<T0, T1, T2> {
   ///   - [third]: A callback function for the [T2] type value.
   ///
   /// - Throws: An [Exception] if the [Triplet] is empty (neither [first], [second], nor [third] value is present).
-  void on<R>({
-    void Function(T0)? first,
-    void Function(T1)? second,
-    void Function(T2)? third,
-  }) {
+  Future<void> on<R>({
+    Future<void> Function(T0)? first,
+    Future<void> Function(T1)? second,
+    Future<void> Function(T2)? third,
+  }) async {
     if (isFirst) {
-      return first?.call(this.first);
+      return await first?.call(this.first);
     } else if (isSecond) {
-      return second?.call(this.second);
+      return await second?.call(this.second);
     } else if (isThird) {
-      return third?.call(this.third);
+      return await third?.call(this.third);
     } else {
       throw Exception('Triplet is empty');
     }

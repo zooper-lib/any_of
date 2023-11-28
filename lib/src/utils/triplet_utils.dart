@@ -17,13 +17,13 @@ class TripletUtils {
   ///         the method does not perform any action for those values.
   static Future<void> run<T0, T1, T2>({
     required Future<Triplet<T0, T1, T2>> Function() functionToExecute,
-    void Function(T0)? onFirst,
-    void Function(T1)? onSecond,
-    void Function(T2)? onThird,
+    Future<void> Function(T0)? onFirst,
+    Future<void> Function(T1)? onSecond,
+    Future<void> Function(T2)? onThird,
   }) async {
     var response = await functionToExecute();
 
-    response.on(
+    await response.on(
       first: onFirst,
       second: onSecond,
       third: onThird,

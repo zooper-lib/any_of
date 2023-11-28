@@ -2,8 +2,8 @@
 
 A Flutter package that provides utility classes for working with algebraic data types (ADTs) known as "any-of" types. These types allow you to represent a value that can be one of several possible options.
 
-[![Pub Version](https://img.shields.io/pub/v/package_name.svg)](https://pub.dev/packages/package_name)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/your_username/package_name/blob/main/LICENSE)
+[![Pub Version](https://img.shields.io/pub/v/package_name.svg)](https://pub.dev/packages/any_of)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/zooper-lib/any_of/blob/main/LICENSE)
 
 ## Overview
 
