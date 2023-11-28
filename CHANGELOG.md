@@ -11,3 +11,8 @@
 - Made `map()` function parameters nullable
 - Added `toString()` method to response types
 - Added `InternalError` response type
+
+## 0.0.4
+
+- Addeed `run` function
+- Added comments for most methods
