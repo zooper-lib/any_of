@@ -13,8 +13,7 @@ class Octet<T0, T1, T2, T3, T4, T5, T6, T7> extends Septet<T0, T1, T2, T3, T4, T
   Octet.seventh(T6 value) : this(null, null, null, null, null, null, value, null);
   Octet.eighth(T7 value) : this(null, null, null, null, null, null, null, value);
 
-  Octet(T0? first, T1? second, T2? third, T3? fourth, T4? fifth, T5? sixth, T6? seventh, this._eighth)
-      : super(first, second, third, fourth, fifth, sixth, seventh);
+  Octet(super.first, super.second, super.third, super.fourth, super.fifth, super.sixth, super.seventh, this._eighth);
 
   bool get isEighth => _eighth != null;
 

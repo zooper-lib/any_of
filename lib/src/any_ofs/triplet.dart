@@ -8,7 +8,7 @@ class Triplet<T0, T1, T2> extends Doublet<T0, T1> with EquatableMixin {
   Triplet.second(T1 value) : this(null, value, null);
   Triplet.third(T2 value) : this(null, null, value);
 
-  Triplet(T0? first, T1? second, this._third) : super(first, second);
+  Triplet(super.first, super.second, this._third);
 
   bool get isThird => _third != null;
 

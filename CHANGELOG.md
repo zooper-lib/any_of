@@ -1,3 +1,8 @@
+## 1.1.0
+
+- Added more types which can be used as response types
+- Fixed a small implementation mistake in `Nonet`
+
 ## 1.0.0
 
 - Made `on` and `run` methods async
