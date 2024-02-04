@@ -14,8 +14,8 @@ class Nonet<T0, T1, T2, T3, T4, T5, T6, T7, T8> extends Octet<T0, T1, T2, T3, T4
   Nonet.eighth(T7 value) : this(null, null, null, null, null, null, null, value, null);
   Nonet.ninth(T8 value) : this(null, null, null, null, null, null, null, null, value);
 
-  Nonet(T0? first, T1? second, T2? third, T3? fourth, T4? fifth, T5? sixth, T6? seventh, T7? eighth, this._ninth)
-      : super(first, second, third, fourth, fifth, sixth, seventh, eighth);
+  Nonet(super.first, super.second, super.third, super.fourth, super.fifth, super.sixth, super.seventh, super.eighth,
+      this._ninth);
 
   bool get isNinth => _ninth != null;
 

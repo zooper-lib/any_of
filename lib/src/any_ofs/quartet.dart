@@ -9,7 +9,7 @@ class Quartet<T0, T1, T2, T3> extends Triplet<T0, T1, T2> with EquatableMixin {
   Quartet.third(T2 value) : this(null, null, value, null);
   Quartet.fourth(T3 value) : this(null, null, null, value);
 
-  Quartet(T0? first, T1? second, T2? third, this._fourth) : super(first, second, third);
+  Quartet(super.first, super.second, super.third, this._fourth);
 
   bool get isFourth => _fourth != null;
 

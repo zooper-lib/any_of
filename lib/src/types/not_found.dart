@@ -1,4 +1,4 @@
-import 'any_of_type.dart';
+import 'package:any_of/any_of.dart';
 
 class NotFound extends AnyOfType {
   final String message;
@@ -6,5 +6,5 @@ class NotFound extends AnyOfType {
   NotFound(this.message);
 
   @override
-  String toString() => 'NotFound: $message';
+  String toString() => '$NotFound: $message';
 }

@@ -11,8 +11,7 @@ class Sextet<T0, T1, T2, T3, T4, T5> extends Quintet<T0, T1, T2, T3, T4> with Eq
   Sextet.fifth(T4 value) : this(null, null, null, null, value, null);
   Sextet.sixth(T5 value) : this(null, null, null, null, null, value);
 
-  Sextet(T0? first, T1? second, T2? third, T3? fourth, T4? fifth, this._sixth)
-      : super(first, second, third, fourth, fifth);
+  Sextet(super.first, super.second, super.third, super.fourth, super.fifth, this._sixth);
 
   bool get isSixth => _sixth != null;
 

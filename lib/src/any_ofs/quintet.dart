@@ -10,7 +10,7 @@ class Quintet<T0, T1, T2, T3, T4> extends Quartet<T0, T1, T2, T3> with Equatable
   Quintet.fourth(T3 value) : this(null, null, null, value, null);
   Quintet.fifth(T4 value) : this(null, null, null, null, value);
 
-  Quintet(T0? first, T1? second, T2? third, T3? fourth, this._fifth) : super(first, second, third, fourth);
+  Quintet(super.first, super.second, super.third, super.fourth, this._fifth);
 
   bool get isFifth => _fifth != null;
 

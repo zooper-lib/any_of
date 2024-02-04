@@ -29,7 +29,7 @@ dependencies:
 
 ## Importing the package
 
-``` yaml
+```yaml
 import 'package:any_of/any_of.dart';
 ```
 
@@ -37,7 +37,7 @@ import 'package:any_of/any_of.dart';
 
 A Doublet represents a pair of values where one value is selected. Here's an example of how to create and work with a Doublet:
 
-``` dart
+```dart
 
 class TestDoubletClass extends Doublet<String, NotFound> {
   TestDoubletClass.success(super.value) : super.first();
@@ -74,21 +74,24 @@ For more detailed examples and usage instructions, please refer to the API Refer
 # API Reference
 
 ## `Doublet` Class
+
 A class that represents a pair of values where one of the values is selected.
 
 ### Constructors
+
 - `Doublet.first(T0 value)`: Constructs a Doublet instance with the first value selected.
 - `Doublet.second(T1 value)`: Constructs a Doublet instance with the second value selected.
 
 ### Properties
+
 - `isFirst`: Returns true if the first value is selected, otherwise false.
 - `isSecond`: Returns true if the second value is selected, otherwise false.
 - `first`: Returns the first value. Throws a TypeError if the first value is not selected.
 - `second`: Returns the second value. Throws a TypeError if the second value is not selected.
 - `props`: A list of the first and second values.
 
-
 ### Methods
+
 - `map<R>({required R Function(T0) first, required R Function(T1) second})`: Applies a mapping function to the selected value and returns the result. Throws an Exception if no value is selected.
 - `on<R>({required void Function(T0) first, required void Function(T1) second})`: Executes a callback function based on the selected value. Throws an Exception if no value is selected.
 - `ifType<R>({required void Function(R) callback})`: Executes a callback function if the selected value matches the specified type. Does nothing if no value is selected or if the selected value does not match the type.
@@ -108,13 +111,38 @@ The classes are:
 - Octet
 - Nonet
 
+## Built-In response types
+
+As most applications share the same errors, there are some built-in response types you can use as an indicator what went wrong. Right now there are:
+
+- ApiError
+- BadRequest
+- Conflict
+- InternalError
+- NetworkError
+- NotFound
+- NotImplemented
+- PermissionDenied
+- SerializationError
+- ServiceUnavailable
+- Success
+- TimedOut
+- Unauthorized
+- UnknownError
+- ValidationFailed
+
+But you can return any type as response, such as `bool`, `String`, `int`, etc. or any other custom class. The above response types extend from [AnyOfType] but this is not a must.
+
 # Contributing
+
 Contributions are welcome! If you encounter any issues or have suggestions for improvements, please create an issue on the GitHub repository. Pull requests are also encouraged.
 
 Before contributing, please review the contribution guidelines and ensure adherence to the code of conduct.
 
 # Changelog
+
 See the CHANGELOG for a complete list of changes and releases in the package.
 
 # License
+
 MIT

@@ -12,8 +12,7 @@ class Septet<T0, T1, T2, T3, T4, T5, T6> extends Sextet<T0, T1, T2, T3, T4, T5> 
   Septet.sixth(T5 value) : this(null, null, null, null, null, value, null);
   Septet.seventh(T6 value) : this(null, null, null, null, null, null, value);
 
-  Septet(T0? first, T1? second, T2? third, T3? fourth, T4? fifth, T5? sixth, this._seventh)
-      : super(first, second, third, fourth, fifth, sixth);
+  Septet(super.first, super.second, super.third, super.fourth, super.fifth, super.sixth, this._seventh);
 
   bool get isSeventh => _seventh != null;
 
