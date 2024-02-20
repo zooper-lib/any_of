@@ -1,9 +1,6 @@
 # any_of
 
-A Dart package that provides utility classes for working with algebraic data types (ADTs) known as "any-of" types. These types allow you to represent a value that can be one of several possible options.
-
-[![Pub Version](https://img.shields.io/pub/v/package_name.svg)](https://pub.dev/packages/any_of)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/zooper-lib/any_of/blob/main/LICENSE)
+A Dart package that provides utility classes for working with discriminated unions known as "any-of" types. These types allow you to represent a value that can be one of several possible options.
 
 ## Overview
 
