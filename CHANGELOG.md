@@ -1,6 +1,6 @@
 ## 2.0.0
 
-- Changed the package from a flutter to pure dart
+- Changed the package from flutter to pure dart
 
 ## 1.1.0
 

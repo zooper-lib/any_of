@@ -1,0 +1,66 @@
+trigger: none
+pr:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  packageName: "any_of"
+
+steps:
+  - checkout: self
+    submodules: true
+
+  - task: UseGitVersion@5
+    displayName: "GitVersion"
+    inputs:
+      updateAssemblyInfo: false
+
+  - script: |
+      echo "Installing Dart SDK..."
+      sudo apt-get update
+      sudo apt-get install apt-transport-https
+      sudo sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
+      sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+      sudo apt-get update
+      sudo apt-get install dart
+    displayName: "Install Dart"
+
+  - script: |
+      echo "Adding Dart to PATH..."
+      echo "##vso[task.prependpath]/usr/lib/dart/bin"
+      echo "##vso[task.setvariable variable=DART_SDK]/usr/lib/dart"
+    displayName: "Configure Environment Variables"
+
+  - script: |
+      echo "Running pub get to fetch dependencies..."
+      pub get
+    displayName: "Get dependencies"
+
+  - script: |
+      EXPECTED_VERSION=$(grep 'version:' pubspec.yaml | cut -d ' ' -f 2)
+      echo "Expected package version: $EXPECTED_VERSION"
+      LATEST_PUBLISHED_VERSION=$(curl -s https://pub.dev/packages/$(packageName) | grep 'data-version="' | head -1 | sed -n 's/.*data-version="\([^"]*\)".*/\1/p')
+      echo "Latest published version on pub.dev: $LATEST_PUBLISHED_VERSION"
+      if [ "$EXPECTED_VERSION" = "$LATEST_PUBLISHED_VERSION" ]; then
+        echo "##vso[task.logissue type=error]Version $EXPECTED_VERSION is already published on pub.dev."
+        exit 1
+      else
+        echo "Version $EXPECTED_VERSION is not published on pub.dev. Proceeding..."
+      fi
+    displayName: "Check if version is published on pub.dev"
+    env:
+      packageName: $(packageName)
+
+  - script: |
+      echo "Analyzing the package..."
+      dart analyze
+    displayName: "Analyze"
+
+  - script: |
+      echo "Running tests..."
+      dart test
+    displayName: "Test"
