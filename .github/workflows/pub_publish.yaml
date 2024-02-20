@@ -21,12 +21,12 @@ jobs:
         run: dart pub get
 
       - name: Setup Authentication
-        run: dart pub token add https://pub.dev --env-var=PUB_CREDENTIALS
+        run: dart pub token add https://pub.dev --env-var=PUB_ACCESSTOKEN
         env:
-          PUB_CREDENTIALS: ${{ secrets.PUB_CREDENTIALS }}
+          PUB_ACCESSTOKEN: ${{ secrets.PUB_ACCESSTOKEN }}
 
       - name: Publish to pub.dev
         run: dart pub publish --force
         env:
           PUB_HOSTED_URL: https://pub.dev
-          PUB_CREDENTIALS: ${{ secrets.PUB_CREDENTIALS }}
+          PUB_ACCESSTOKEN: ${{ secrets.PUB_ACCESSTOKEN }}
