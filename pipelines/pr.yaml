@@ -32,7 +32,7 @@ steps:
 
   - script: |
       echo "Running pub get to fetch dependencies..."
-      pub get
+      dart pub get
     displayName: "Get dependencies"
 
   - script: |
