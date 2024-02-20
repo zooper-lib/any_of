@@ -1,3 +1,7 @@
+## 2.0.1
+
+- Adjusted project description
+
 ## 2.0.0
 
 - Changed the package from flutter to pure dart
