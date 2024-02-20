@@ -25,19 +25,19 @@ steps:
     displayName: "Install Dart"
 
   # Authentication with pub.dev
-- script: |
-    echo "Authenticating with pub.dev..."
-    dart pub token add pub.dev --token $(PubDevToken)
-  displayName: "Authenticate with pub.dev"
-  env:
-    PUB_CACHE: $(Agent.ToolsDirectory)/.pub-cache
-    PubDevToken: $(PubDevToken)
+  - script: |
+      echo "Authenticating with pub.dev..."
+      dart pub token add pub.dev --token $(PubDevToken)
+    displayName: "Authenticate with pub.dev"
+    env:
+      PUB_CACHE: $(Agent.ToolsDirectory)/.pub-cache
+      PubDevToken: $(PubDevToken)
 
-# Publish package
-- script: |
-    echo "Publishing package to pub.dev..."
-    dart pub publish --force
-  displayName: "Publish Package"
-  env:
-    PUB_CACHE: $(Agent.ToolsDirectory)/.pub-cache
-    PubDevToken: $(PubDevToken)
+  # Publish package
+  - script: |
+      echo "Publishing package to pub.dev..."
+      dart pub publish --force
+    displayName: "Publish Package"
+    env:
+      PUB_CACHE: $(Agent.ToolsDirectory)/.pub-cache
+      PubDevToken: $(PubDevToken)
