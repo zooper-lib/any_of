@@ -1,0 +1,39 @@
+name: Dart CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@v1.2
+
+      - name: Install Dependencies
+        run: dart pub get
+
+      - name: Check if version is published on pub.dev
+        run: |
+          PACKAGE_NAME="any_of"
+          EXPECTED_VERSION=$(grep 'version:' pubspec.yaml | cut -d ' ' -f 2)
+          echo "Expected package version: $EXPECTED_VERSION"
+          LATEST_PUBLISHED_VERSION=$(curl -s https://pub.dev/packages/$PACKAGE_NAME | grep 'data-version="' | head -1 | sed -n 's/.*data-version="\([^"]*\)".*/\1/p')
+          echo "Latest published version on pub.dev: $LATEST_PUBLISHED_VERSION"
+          if [ "$EXPECTED_VERSION" = "$LATEST_PUBLISHED_VERSION" ]; then
+            echo "::error::Version $EXPECTED_VERSION is already published on pub.dev."
+            exit 1
+          else
+            echo "Version $EXPECTED_VERSION is not published on pub.dev. Proceeding..."
+          fi
+
+      - name: Analyze
+        run: dart analyze
+
+      - name: Test
+        run: dart test
