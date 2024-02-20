@@ -1,21 +1,21 @@
 name: any_of
-description: A Flutter package for working with algebraic data types (ADTs) representing "any-of" values with multiple options.
-version: 1.1.0
-homepage: https://pub.dev/publishers/zooper.dev/packages
+description: A Dart package for working with algebraic data types (ADTs) representing "any-of" values with multiple options.
+version: 2.0.0
+homepage: https://www.zooper.dev/
+repository: https://github.com/zooper-lib/any_of
+topic:
+  - algebraic-data-types
+  - adt
+  - discriminated-union
+funding:
+  - https://www.buymeacoffee.com/zooperlib
 
 environment:
   sdk: ">=3.0.5 <4.0.0"
-  flutter: ">=1.17.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
-
   equatable: ^2.0.5
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^2.0.0
-
-flutter:
+  lints: ^3.0.0
+  test: ^1.24.0
