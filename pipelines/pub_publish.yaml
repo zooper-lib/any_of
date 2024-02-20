@@ -25,13 +25,13 @@ steps:
     displayName: "Install Dart"
 
   # Authentication with pub.dev
-- script: |
+  - script: |
       echo "Authenticating with pub.dev..."
       dart pub token add pub.dev --env-var=PUB_DEV_TOKEN
     displayName: "Authenticate with pub.dev"
     env:
       PUB_CACHE: $(Agent.ToolsDirectory)/.pub-cache
-      PUB_DEV_TOKEN: $(PubDevToken)  # This maps the Azure DevOps secret variable to an environment variable
+      PUB_DEV_TOKEN: $(PubDevToken) # This maps the Azure DevOps secret variable to an environment variable
 
   # Publish package
   - script: |
