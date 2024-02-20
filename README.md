@@ -1,13 +1,13 @@
 # any_of
 
-A Flutter package that provides utility classes for working with algebraic data types (ADTs) known as "any-of" types. These types allow you to represent a value that can be one of several possible options.
+A Dart package that provides utility classes for working with algebraic data types (ADTs) known as "any-of" types. These types allow you to represent a value that can be one of several possible options.
 
 [![Pub Version](https://img.shields.io/pub/v/package_name.svg)](https://pub.dev/packages/any_of)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/zooper-lib/any_of/blob/main/LICENSE)
 
 ## Overview
 
-The `any_of` package simplifies working with any-of types in your Flutter applications. It provides the following classes:
+The `any_of` package simplifies working with any-of types in your Dart applications. It provides the following classes:
 
 - `Doublet`: Represents a pair of values where one of the values is selected.
 - `Triplet`: Represents a triplet of values where one of the values is selected.
