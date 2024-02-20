@@ -14,11 +14,6 @@ steps:
   - checkout: self
     submodules: true
 
-  - task: UseGitVersion@5
-    displayName: "GitVersion"
-    inputs:
-      updateAssemblyInfo: false
-
   - script: |
       echo "Installing Dart SDK..."
       sudo apt-get update
