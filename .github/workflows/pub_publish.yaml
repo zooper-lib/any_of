@@ -1,0 +1,27 @@
+name: Publish Dart Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1.2
+        with:
+          sdk: stable
+
+      - name: Install Dependencies
+        run: dart pub get
+
+      - name: Publish to pub.dev
+        run: dart pub publish --force
+        env:
+          PUB_HOSTED_URL: https://pub.dev
+          PUB_CREDENTIALS: ${{ secrets.PUB_CREDENTIALS }}
