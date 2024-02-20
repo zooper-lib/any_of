@@ -40,4 +40,4 @@ steps:
     displayName: "Publish Package"
     env:
       PUB_CACHE: $(Agent.ToolsDirectory)/.pub-cache
-      PubDevToken: $(PubDevToken)
+      PUB_DEV_TOKEN: $(PubDevToken)
